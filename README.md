@@ -1,3 +1,5 @@
+`
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -89,7 +91,7 @@ model policies {
 }
 
 
-
+`
 
 ## web
 https://www.prisma.io/

@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+generator client {
+  provider = "prisma-client-js"
+}
 
-## Getting Started
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+model categories {
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(100) @unique
+  news_list   news_list[]
+  createdAt   DateTime @default(now()) @db.Timestamp(0)
+  updatedAt   DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+model news_list {
+  id          Int     @id @default(autoincrement())
+  title       String  @db.VarChar(100)
+  short_des   String  @db.VarChar(400)
+  img1        String  @db.VarChar(300) 
+  img2        String  @db.VarChar(300) 
+  img3        String  @db.VarChar(300) 
+  img4        String  @db.VarChar(300) 
+  keywords    String  @db.VarChar(300)
+  long_des    String  @db.LongText
+  type        String  @db.VarChar(200)
+  catID       Int
+  comments    comments[]
+  categories  categories @relation(fields:[catID], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  createdAt   DateTime @default(now()) @db.Timestamp(0)
+  updatedAt   DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+model users {
+  id          Int     @id @default(autoincrement())
+  firstName   String  @db.VarChar(50)
+  lastName    String  @db.VarChar(50)
+  email       String  @db.VarChar(50) @unique
+  mobile      String  @db.VarChar(50)
+  password    String  @db.VarChar(50)
+  otp         String  @db.VarChar(10)
+  comments    comments[]
+  createdAt   DateTime @default(now()) @db.Timestamp(0)
+  updatedAt   DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+model comments {
+  id            Int       @id @default(autoincrement())
+  userID        Int
+  postID        Int
+  users         users     @relation(fields:[userID], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  news_list     news_list @relation(fields:[postID], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  descriptions  String    @db.VarChar(1000)
+}
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+model socials {
+  id          Int     @id @default(autoincrement())
+  facebook    String  @db.VarChar(200)
+  youtube     String  @db.VarChar(200)
+  twitter     String  @db.VarChar(200)
+  linkedin    String  @db.VarChar(200)
+  about       String  @db.Text
+  address     String  @db.Text
+  createdAt   DateTime @default(now()) @db.Timestamp(0)
+  updatedAt   DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+model subscribers {
+  id          Int       @id @default(autoincrement())
+  email       String    @db.VarChar(200) @unique
+  createdAt   DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt   DateTime  @default(now()) @db.Timestamp(0) @updatedAt
+}
+
+
+model policies {
+  id          Int       @id @default(autoincrement())
+  long_des    String    @db.LongText
+  type        String    @db.VarChar(50)
+}
+
+
+
+
+## web
+https://www.prisma.io/
+
+## installation procedure
+npm init -y
+npm install prisma --save-dev
+npx prisma init --datasource-provider mysql
+
+### prisma extension for VS code need to isntall

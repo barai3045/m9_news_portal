@@ -1,16 +1,3 @@
-# 906 [Backend] Create JWF Token Helper
-
-### https://www.npmjs.com/package/jose
-
-`npm i jose`
-
-
-JWT_SECRET="123-XYZ-ABC"
-JWT_ISSUER="Localhost"
-JWT_EXPIRATION_TIME="24h"
-
-
-```
 import { SignJWT, jwtVerify } from "jose";
 
 export async function CreateToker(email, id){
@@ -24,14 +11,11 @@ export async function CreateToker(email, id){
         .sign(secret)
 
     return token;
+
 }
-```
 
-
-```
 export async function VerifyToken(token){
     const secret=new TextEncoder().sncode(process.env.JWT_SECRET);
     const decoded = await jwtVerify(token, secret);
     return decoded['payload'];
 }
-```

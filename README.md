@@ -1,37 +1,33 @@
-# 906 [Backend] Create JWF Token Helper
+# 907 [API] Login Api
 
 ### https://www.npmjs.com/package/jose
 
 `npm i jose`
 
 
-JWT_SECRET="123-XYZ-ABC"
-JWT_ISSUER="Localhost"
-JWT_EXPIRATION_TIME="24h"
-
-
 ```
-import { SignJWT, jwtVerify } from "jose";
+import { CreateToken } from "@/utility/JWFTokenHelper";
+import { PrismaClient } from "@prisma/client";
+import { NextResponse } from "next/server";
 
-export async function CreateToker(email, id){
-    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-    const Payload={email:email, id:id};
-    let token = await new SignJWT(Payload)
-        .setProtectedHeader({alg:'HS256'})
-        .setIssuedAt()
-        .setIssuedAt(process.env.JWT_ISSUER)
-        .setExpirationTime(process.env.JWT_EXPIRATION_TIME)
-        .sign(secret)
+export async function POST(req, res){
+    try {
+        let reqBody = await req.json();
+        const prisma = new PrismaClient();
+        const result = await prisma.users.findUnique({where:reqBody});
 
-    return token;
-}
-```
+        if(result.length===0){
+            return NextResponse.json({status:"fail", data: result})
+        } else {
+            let token = await CreateToken(result['email'], result['id']);
+            let expireDuration = new Date(Date.now()+24*60*60*1000);
+            const  cookieString = `token=${token}; expires=${expireDuration.toUTCString()}; path=/`
+            return NextResponse.json({status:"success", data:token}, {status:200, headers:{'set-cookie':cookieString}})
+        }
 
-
-```
-export async function VerifyToken(token){
-    const secret=new TextEncoder().sncode(process.env.JWT_SECRET);
-    const decoded = await jwtVerify(token, secret);
-    return decoded['payload'];
+    }
+    catch (e) {
+        return NextResponse.json({status:"fail", data:e})
+    }
 }
 ```

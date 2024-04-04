@@ -4,11 +4,11 @@
 
 `npm i jose`
 
-
+```
 JWT_SECRET="123-XYZ-ABC"
 JWT_ISSUER="Localhost"
 JWT_EXPIRATION_TIME="24h"
-
+```
 
 ```
 import { SignJWT, jwtVerify } from "jose";

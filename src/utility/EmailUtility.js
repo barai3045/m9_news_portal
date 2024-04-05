@@ -1,13 +1,3 @@
-# 909 [Backend] Create Email Utility
-
-### https://www.npmjs.com/package/nodemailer
-
-
-`npm i nodemailer`
-
-## Email Utility
-
-```
 import nodemailer from 'nodemailer'
 
 export async function  SendMail(EmailTo, EmailText, EmailSubject){
@@ -37,4 +27,3 @@ export async function  SendMail(EmailTo, EmailText, EmailSubject){
     return await Transport.sendMail(MailOption)
     
 }
-```

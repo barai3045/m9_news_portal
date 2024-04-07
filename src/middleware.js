@@ -1,8 +1,3 @@
-# 913 [BACKEND] Create Auth Verification Middileware
-
-
-### middleware.js
-```
 import { NextResponse } from "next/server";
 import { VerifyToken } from "./utility/JWFTokenHelper";
 
@@ -24,5 +19,3 @@ export async function middleware(req,res){
         return NextResponse.next({request:{headers:requestHeader}})
     }
 }
-
-```

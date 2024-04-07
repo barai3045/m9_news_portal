@@ -1,4 +1,4 @@
-# 910 [API] Verify Email Ulility
+# 910 [API] Verify Email Address
 
 
 ```

@@ -1,7 +1,3 @@
-# 916 [API] Create Subscription API
-
-
-```
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
@@ -20,5 +16,3 @@ export async function POST(req, res){
         return NextResponse.json({status:"fail", data:e})
     }
 }
-
-```

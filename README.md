@@ -13,7 +13,7 @@ import nodemailer from 'nodemailer'
 export async function  SendMail(EmailTo, EmailText, EmailSubject){
     
     let Transport = nodemailer.createTransport({
-        host: "mail.temarabbil.com",
+        host: "mail.teamrabbil.com",
         port:25,
         secure:false,
         auth:{

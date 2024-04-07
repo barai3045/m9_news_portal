@@ -1,27 +1,28 @@
-# 913 [BACKEND] Create Auth Verification Middileware
+# 915 [API] Profile Update
 
 
-### middleware.js
 ```
+import { PrismaClient } from "@prisma/client";
+import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import { VerifyToken } from "./utility/JWFTokenHelper";
 
-export async function middleware(req,res){
+export async function POST(req, res){
     try {
-        let token = req.cookies.get('token');
-        let payload = await VerifyToken(token['value'])
-        const requestHeader = new Headers(req.headers);
-        requestHeader.set('email', payload['email'])
-        requestHeader.set('id', payload['id'])
+        let headersList=headers();
+        let id = parseInt(headersList.get('id'));
 
-        return NextResponse.next({request:{headers:requestHeader}})
+        let reqBody = await req.json();
+        reqBody.otp ="0";
+        const prisma = new PrismaClient()
+        const result = await prisma.users.update({
+            where: {id:id},
+            data:reqBody
+        })
 
-    } catch(e) {
-        const requestHeader = new Headers(req.headers);
-        requestHeader.set('email', '0')
-        requestHeader.set('id', '0')
-
-        return NextResponse.next({request:{headers:requestHeader}})
+        return NextResponse.json({status:"success", data:result})
+    }
+    catch (e) {
+        return NextResponse.json({status:"fail", data:e})
     }
 }
 

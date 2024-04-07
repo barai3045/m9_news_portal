@@ -4,7 +4,9 @@ import { VerifyToken } from "./utility/JWFTokenHelper";
 export async function middleware(req,res){
     try {
         let token = req.cookies.get('token');
+        
         let payload = await VerifyToken(token['value'])
+        
         const requestHeader = new Headers(req.headers);
         requestHeader.set('email', payload['email'])
         requestHeader.set('id', payload['id'])

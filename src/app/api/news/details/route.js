@@ -10,7 +10,8 @@ export async function GET(req, res){
 
         const prisma = new PrismaClient()
         const result = await prisma.news_list.findUnique({
-           where:{id:id}
+           where:{id:id},
+           include:{categories:true}
         })
 
         return NextResponse.json({status:"success", data:result})

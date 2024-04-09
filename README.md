@@ -1,117 +1,20 @@
-# 920 [API] Comments Create Delete List
+# 921 [Front End] Working with initial File Folders
 
-## Commnets by news
+### https://www.npmjs.com/package/bootstrap
+`npm i bootstrap`
 
-```
-import { PrismaClient } from '@prisma/client';
-import { NextResponse } from 'next/server';
+### https://www.npmjs.com/package/bootstrap-icons
+`npm i bootstrap-icons`
 
-export async function GET(req, res){
-
-    try{
-
-        let {searchParams} = new URL(req.url);
-        let postID = parseInt(searchParams.get('postID'))
-
-        const prisma = new PrismaClient();
-
-        const result = await prisma.comments.findMany({
-            where:{postID:postID},
-            include: {
-                users:{select:{firstName:true, lastName:true}}
-            }
-        })
-
-        return NextResponse.json({status:"success", data: result})
-    } catch(e){
-        return NextResponse.json({status:"fail", data:e})
-    }
-}
-```
+### https://www.npmjs.com/package/html-react-parser
+`npm i html-react-parser`
 
 
+### https://www.npmjs.com/package/js-cookie
+`npm i js-cookie`
 
-## comments manage
-```
-import { NextResponse } from 'next/server';
-import {headers} from "next/headers"
-import { PrismaClient } from '@prisma/client';
-```
-```
-export async function GET(req, res){
+### https://www.npmjs.com/package/nextjs-toploader
+`npm i nextjs-toploader`
 
-    try {
-
-        let headerList=headers();
-        let id= parseInt(headerList.get("id"));
-
-        const prisma = new PrismaClient();
-        const result = await prisma.comments.findMany({
-            where:{userID:id},
-            include:{
-                news_list:{select:{title:true}}
-            }
-        })
-
-
-        return NextResponse.json({status:"success", data:result})
-    } catch(e) {
-        return NextResponse.json({status:"fail", data:e})
-    }
-}
-```
-```
-export async function POST(req, res){
-
-    try {
-
-        let headerList=headers();
-        let id= parseInt(headerList.get("id"));
-
-        let reqBody=await req.json();
-        reqBody.userID = id;
-        
-        const prisma = new PrismaClient();
-
-        const result = await prisma.comments.create({
-            data:reqBody
-        })
-
-
-        return NextResponse.json({status:"success", data:result})
-    } catch(e) {
-        return NextResponse.json({status:"fail", data:e})
-    }
-}
-```
-
-```
-export async function DELETE(req, res){
-
-    try {
-
-        let headerList=headers();
-        let user_id= parseInt(headerList.get("id"));
-
-        let reqBody=await req.json();
-        let comment_id = reqBody['id'];
-
-        const prisma = new PrismaClient();
-
-        const result = await prisma.comments.deleteMany({
-            where:{
-                AND: [
-                    {userID:user_id},
-                    {id:comment_id}
-                ]
-            }
-        })
-
-
-        return NextResponse.json({status:"success", data:result})
-    } catch(e) {
-        return NextResponse.json({status:"fail", data:e})
-    }
-}
-
-```
+### https://www.npmjs.com/package/react-hot-toast
+`npm i react-hot-toast`

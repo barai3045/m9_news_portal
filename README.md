@@ -1,92 +1,64 @@
-# 922 [Front End] Working with Plain Layout
+# 923 [Front End] Working with Plain Layout
 
 
-## plain layout
+## https://www.npmjs.com/package/react-bootstrap
+
+`npm i react-bootstrap`
+
+## AppNavBar
 
 ```
-import React from 'react';
-import AppNavBar from './AppNavBar';
-import Footer from './Footer';
+"use client"
+import {Navbar, Nav} from 'react-bootstrap'
+import Link from 'next/link'
 
-const PlainLayout = (props) => {
+const AppNavBar = () => {
     return (
-        <>
-            <AppNavBar/>
-            {props.children}
-            <Footer/>
-        </>
-    );
-};
-
-export default PlainLayout;
-```
-
-
-
-## Footer
-```
-import Subscribe from "@/components/news/Subscribe"
-import Link from "next/link"
-
-const Footer = () => {
-    return (
-        <div className="section-footer">
-            <div className="py-5 bg-dark">
+        <div>
+            <div className="py-2 bg-dark text-white container-fluid">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-md-3 col-sm-6 p-3">
-                            <h5 className="text-white fw-bold my-3"> ABOUT </h5>
-                            <p className="text-white"> {""} </p>
-                            <div className="d-flex justify-content-center justify-content-sm-start">
-                                <div className="d-flex align-items-center">
-                                <a target="_blank" href={""}>
-                                    <div className="d-flex justify-content-center align-items-center">
-                                        <i className=" h3 text-white bi bi-facebook"></i>
-                                    </div>
-                                </a>
-                                <a target="_blank" href={""}>
-                                    <div className="d-flex justify-content-center align-items-center">
-                                        <i className="h3 text-white mx-2 bi bi-youtube"></i>
-                                    </div>
-                                </a>
-                                <a target="_blank" href={""}>
-                                    <div className="d-flex justify-content-center align-items-center">
-                                        <i className=" h3 text-white mx-2 bi bi-twitter"></i>
-                                    </div>
-                                </a>
-                                <a target="_blank" href={""}>
-                                    <div className="d-flex justify-content-center align-items-center">
-                                        <i className=" h3 text-white mx-2 bi bi-linkedin"></i>
-                                    </div>
-                                </a>
-                            </div>
+                    <div className="row justify-content-between">
+                        <div className="col-md-4">
+                            <h6><i className="bi bi-calendar2-check"></i> Today:<span> {new Date().getDay()}/{new Date().getMonth()}/{new Date().getFullYear()} </span></h6>
                         </div>
-                    </div>
-                   
-                    <div className="col-md-3 col-sm-6 p-3">
-                        <h5 className="text-white fw-bold my-3">RECOMMENDED</h5>
-                        <Link key={""} className="nav-link text-white my-1" href={"/category?id="} >{""}</Link>
-                    </div>
-                    <div className=" col-md-3 col-sm-6 p-3">
-                        <h5 className="text-white fw-bold my-3"> LEGAL </h5>
-                        <ul className="list-unstyled text-white">
-                            <li className="my-1">
-                                <Link href="" className="nav-link">Privacy Policy</Link>
-                            </li>
-                            <li className="my-1">
-                                <Link href="" className="nav-link">Terms & Conditions</Link>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="col-md-3 col-sm-6 p-3">
-                        <Subscribe/>
+                        <div className="col-md-4">
+                            <span className="float-end">
+                                <a target="_blank" className="text-white" href={""}><i className="mx-2 bi bifacebook"></i></a>
+                                <a target="_blank" className="text-white" href={""}><i className="mx-2 bi biyoutube"></i></a>
+                                <a target="_blank" className="text-white" href={""}><i className="mx-2 bi bi bitwitter"></i></a>
+                                <a target="_blank" className="text-white" href={""}><i className="mx-2 bi bilinkedin"></i></a>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
+            <Navbar expand="lg" className="bg-white sticky-top shadow-sm">
+                <div className="container">
+                    <div className="navbar-brand">
+                        <img className="nav-logo" src={"/images/logo.svg"} alt="img"/>
+                    </div>
+                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Collapse id="navbarScroll">
+                        <Nav className="me-auto ms-3 my-2 my-lg-0" style={ {maxHeight:'100px' }} navbarScroll>
+                            <Link className="nav-link f-13" href="/">Home</Link>
+                            <Link key={""} className="nav-link f-13" href={"/category?id="} >{""}</Link>
+                        </Nav>
+                        <div className="d-flex ms-3">
+                            <div className="input-group">
+                                <input type="text" className="form-control" placeholder="Search..."/>
+                                <Link href={`/search?keyword=`} className="btn btn-danger" type="button"><i
+                                className="bi bi-search"></i></Link>
+                            </div>
+                        </div>
+                        <>
+                        <Link href="/user/login" className="btn ms-3 btn-outline-danger">Login</Link>
+                        </>
+                    </Navbar.Collapse>
+                </div>
+            </Navbar>
         </div>
-    </div>
     );
 };
 
-export default Footer;
+export default AppNavBar;
 ```

@@ -1,10 +1,38 @@
+import PlainLayout from '@/components/master/Plain-Layout';
+import NewsList from '@/components/news/NewsList';
+import PopularList from '@/components/news/PopularList';
 import React from 'react';
 
-const page = () => {
+async function getData(keyword) {
+    let news = (await(await fetch(`${process.env.HOST}/api/news/search?keyword=${keyword}`)).json())['data']
+    let popular = (await(await fetch(`${process.env.HOST}/api/news/type?type=Popular`)).json())['data']
+
+    return {news:news, popular:popular}
+}
+
+
+
+const page =async (props) => {
+    let keyword = props.searchParams['keyword'];
+    const data = await getData(keyword);
+    
+    
     return (
-        <div>
+        <PlainLayout>
+            <div className='container mt-4'>
+                <div className='row'>
+                   
+                    <div className='col-md-9 col-lg-9 col-sm-12 col-12 px-3'>
+                        <NewsList latest={data['news']}/>
+                    </div>
+
+                    <div className='col-md-3 col-lg-3 col-sm-12 col-12 px-3'>
+                        <PopularList popular={data['popular']}/>
+                    </div>
+                </div>
+            </div>
             
-        </div>
+        </PlainLayout>
     );
 };
 

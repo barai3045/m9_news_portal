@@ -1,8 +1,12 @@
 "use client"
+import React, {useState} from 'react';
 import {Navbar, Nav} from 'react-bootstrap'
 import Link from 'next/link'
 
 const AppNavBar = (props) => {
+
+    let [keyword, setKeyword] = useState("")
+
     return (
         <div>
             <div className="py-2 bg-dark text-white container-fluid">
@@ -38,13 +42,11 @@ const AppNavBar = (props) => {
                                 })
                             }
                           
-
                         </Nav>
                         <div className="d-flex ms-3">
                             <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Search..."/>
-                                <Link href={`/search?keyword=`} className="btn btn-danger" type="button"><i
-                                className="bi bi-search"></i></Link>
+                                <input onChange={(e) => {setKeyword(e.target.value)}} type="text" className="form-control" placeholder="Search..."/>
+                                <Link href={ keyword===""?("/"):(`/search?keyword=${keyword}`) } className="btn btn-danger" type="button"><i className="bi bi-search"></i></Link>
                             </div>
                         </div>
                         <>

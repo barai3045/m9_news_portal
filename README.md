@@ -1,5 +1,7 @@
-# 927 [Front End] News List by Category
+# 928 [Front End] News List by Search
 
 
 
-##  category page update
+## search page update
+
+## appnavbar update for search keyword

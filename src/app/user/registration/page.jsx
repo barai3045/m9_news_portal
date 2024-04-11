@@ -1,10 +1,13 @@
+import PlainLayout from '@/components/master/Plain-Layout';
+import SignUpForm from '@/components/user/SignUpForm';
 import React from 'react';
 
 const page = () => {
     return (
-        <div>
+        <PlainLayout>
+            <SignUpForm/>
             
-        </div>
+        </PlainLayout>
     );
 };
 

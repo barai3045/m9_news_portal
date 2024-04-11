@@ -1,4 +1,4 @@
-# 932 [Front End] Login Form submission
+# 933 [Front End] Registration Form submission
 
 
 ## registation form Updated

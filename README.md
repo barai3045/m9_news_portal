@@ -1,5 +1,4 @@
-# 932 [Front End] Login Form submission
+# 934 [Front End] Verify Email Form Submission
 
-
-## registation form Updated
+## verify email updated
 

@@ -1,4 +1,3 @@
-# 934 [Front End] OTPVerify Form Submission
+# 936 [Front End] Reset Password Form Submission
 
-## otp verify updated
-
+## set password updated

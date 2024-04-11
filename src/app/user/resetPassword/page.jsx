@@ -1,10 +1,13 @@
+import PlainLayout from '@/components/master/Plain-Layout';
+import SetPasswordForm from '@/components/user/SetPasswordForm';
 import React from 'react';
 
 const page = () => {
     return (
-        <div>
+        <PlainLayout>
+            <SetPasswordForm/>
             
-        </div>
+        </PlainLayout>
     );
 };
 

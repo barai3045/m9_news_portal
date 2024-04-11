@@ -49,8 +49,8 @@ const PinVerifyForm = () => {
             <div className="col-md-4 col-lg-4 col-sm-12 col-12 ">
                 <div className="card animated fadeIn p-5 gradient-bg">
                     <h5 className="mb-3">Verification PIN</h5>
-                    <label className="form-label">Code</label>
-                    <input value={data.otp} onChange={(e)=>{inputOnChange('otp',e.target.value)}} type="text" className="form-control mb-2"/>
+                    
+                    <input value={data.otp} onChange={(e)=>{inputOnChange('otp',e.target.value)}} type="password" placeholder='XXXXX' className="form-control mb-2"/>
                     <SubmitButton className="btn btn-danger mt-3" onClick={formSubmit} submit={submit} text="Next"/>
                 </div>
             </div>

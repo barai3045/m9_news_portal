@@ -1,4 +1,4 @@
-# 934 [Front End] Verify Email Form Submission
+# 934 [Front End] OTPVerify Form Submission
 
-## verify email updated
+## otp verify updated
 

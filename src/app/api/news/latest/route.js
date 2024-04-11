@@ -1,9 +1,3 @@
-# 926 [Front End] Working with Plain Layout
-
-
-
-## lastest news api created
-```
 import {PrismaClient} from "@prisma/client";
 import {NextResponse} from "next/server";
 
@@ -20,11 +14,3 @@ export async function GET(req,res) {
         return  NextResponse.json({status:"fail",data:e})
     }
 }
-```
-
-
-## home page upade
-
-## NewsList update
-
-## popular list update

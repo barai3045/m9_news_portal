@@ -1,5 +1,5 @@
-# 930 [Front End] Privacy And Terms Page
+# 932 [Front End] Login Form submission
 
 
-## privacy & terms pages add & updated
+
 

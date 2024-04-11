@@ -1,6 +1,5 @@
-# 929 [Front End] News Details Page
+# 930 [Front End] Privacy And Terms Page
 
 
-
-## details page update
+## privacy & terms pages add & updated
 

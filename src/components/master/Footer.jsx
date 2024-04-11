@@ -52,7 +52,7 @@ const Footer = (props) => {
                         <h5 className="text-white fw-bold my-3"> LEGAL </h5>
                         <ul className="list-unstyled text-white">
                             <li className="my-1">
-                                <Link href="/policy" className="nav-link">Privacy Policy</Link>
+                                <Link href="/privacy" className="nav-link">Privacy Policy</Link>
                             </li>
                             <li className="my-1">
                                 <Link href="/terms" className="nav-link">Terms & Conditions</Link>

@@ -6,9 +6,10 @@ import {Toaster} from 'react-hot-toast'
 
 async function getData(){
     let socials = (await (await fetch(`${process.env.HOST}/api/social`)).json())['data']
+    let category = (await(await fetch(`${process.env.HOST}/api/category`)).json())['data']
     let categories = (await (await fetch(`${process.env.HOST}/api/category`)).json())['data']
     //let categories = [{"name":"ca"}]
-    return {socials:socials, categories:categories}
+    return {socials:socials, category:category, categories:categories}
 }
 
 const PlainLayout = async (props) => {

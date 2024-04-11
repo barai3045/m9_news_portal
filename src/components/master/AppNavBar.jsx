@@ -33,7 +33,7 @@ const AppNavBar = (props) => {
                         <Nav className="me-auto ms-3 my-2 my-lg-0" style={ {maxHeight:'100px' }} navbarScroll>
                             <Link className="nav-link f-13" href="/">Home</Link>
                             {
-                                props.data['categories'].map((item, i)=>{
+                                props.data['category'].map((item, i)=>{
                                     return <Link key={i} className="nav-link f-13" href={`/category?id=${item['id']}`} >{ item['name']}</Link>
                                 })
                             }

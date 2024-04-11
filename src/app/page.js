@@ -14,9 +14,6 @@ async function getData(){
   return {slider:slider, featured:featured, popular:popular, latest:latest}
 }
 
-
-
-
 const page = async() => {
   const data = await getData();
   return (
@@ -25,21 +22,17 @@ const page = async() => {
        <Hero featured = {data['featured']} slider = {data['slider']}/>
 
       <div className='container mt-4'>
-      <div className='row'>
-        <h5>LATEST</h5>
-        <hr/>
-        <div className='col-md-9 col-lg-9 col-sm-12 col-12 px-3'>
-          <NewsList latest={data['latest']}/>
+        <div className='row'>
+          <h5>LATEST</h5>
+          <hr/>
+          <div className='col-md-9 col-lg-9 col-sm-12 col-12 px-3'>
+            <NewsList latest={data['latest']}/>
+          </div>
+
+          <div className='col-md-3 col-lg-3 col-sm-12 col-12 px-3'>
+              <PopularList popular={data['popular']}/>
+          </div>
         </div>
-
-        <div className='col-md-3 col-lg-3 col-sm-12 col-12 px-3'>
-            <PopularList popular={data['popular']}/>
-            
-        </div>
-
-      </div>
-
-
       </div>
 
       </PlainLayout>

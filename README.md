@@ -1,5 +1,3 @@
-# 940 [Front End] Manage Login Redirect and Logout
+# 941 [Front End] Manage Redirect
 
-## Login route update for logout
-
-## middleware update
+## user login, registration, emailverification, otpverification, resetpassword redirect update

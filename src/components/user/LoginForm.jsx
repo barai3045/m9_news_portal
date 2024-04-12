@@ -33,12 +33,13 @@ const LoginForm = () => {
             setSubmit(false)
             setData({email:"", password:""})
 
-            res['status'] === 'success'?(
+            if(res['status'] === 'success'){
                 SuccessToast("Request Success")
-            ):(
+                window.location.href=("/")
+            } else {
                 ErrorToast("Invalid Request !")
 
-            )
+            }
         }
     }
 

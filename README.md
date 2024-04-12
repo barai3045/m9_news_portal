@@ -1,4 +1,3 @@
-# 937 [Front End] Get Login Cookies and Changed View
+# 938 [Front End] Change Middleware
 
-## Plain Layout updated
-## AppNavBar updated
+## middleware update

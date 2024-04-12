@@ -14,10 +14,22 @@ export async function middleware(req,res){
         return NextResponse.next({request:{headers:requestHeader}})
 
     } catch(e) {
-        const requestHeader = new Headers(req.headers);
-        requestHeader.set('email', '0')
-        requestHeader.set('id', '0')
+        if(req.nextUrl.pathname.startsWith("/api/")){
+            return NextResponse.json({status:'fail', data:'Unauthorized'}, {status:401})
+        } else {
+            return NextResponse.redirect(new URL('/user/login', req.url))
+        }
 
-        return NextResponse.next({request:{headers:requestHeader}})
+        
     }
+}
+
+
+export const config={
+    matcher:[
+        '/profile',
+        '/comments',
+        '/api/user/profile',
+        '/api/comments/manage',
+    ]
 }

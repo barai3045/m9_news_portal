@@ -1,3 +1,3 @@
-# 941 [Front End] Manage Redirect
+# 942 [Front End] Submit Comments
 
-## user login, registration, emailverification, otpverification, resetpassword redirect update
+## Submit comment & post comment updated from download file

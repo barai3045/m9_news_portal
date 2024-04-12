@@ -7,7 +7,7 @@ import { cookies } from 'next/headers';
 
 async function getData(){
     let socials = (await (await fetch(`${process.env.HOST}/api/social`)).json())['data']
-    let category = (await(await fetch(`${process.env.HOST}/api/category`)).json())['data']
+    let category = (await(await fetch(`${process.env.HOST}/api/category`, { cache: 'no-store' })).json())['data']
     let categories = (await (await fetch(`${process.env.HOST}/api/category`)).json())['data']
     //let categories = [{"name":"ca"}]
     return {socials:socials, category:category, categories:categories}

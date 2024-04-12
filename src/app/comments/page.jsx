@@ -4,7 +4,7 @@ import React from 'react';
 const page = () => {
     return (
         <PlainLayout>
-            
+            <h1>Comments</h1>
         </PlainLayout>
     );
 };

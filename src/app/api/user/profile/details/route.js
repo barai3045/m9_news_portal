@@ -7,6 +7,7 @@ export async function GET(req, res){
 
         const headersList = headers()
         let id = parseInt(headersList.get("id"));
+        console.log(id)
         const prisma = new PrismaClient();
         const result = await prisma.users.findUnique({where:{id:id}})
 

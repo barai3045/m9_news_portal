@@ -6,7 +6,7 @@ import React from 'react';
 
 
 async function getData(){
-  let slider = (await (await fetch(`${process.env.HOST}/api/news/type?type=Slider`)).json())['data']
+  let slider = (await (await fetch(`${process.env.HOST}/api/news/type?type=Slider`, { cache: 'no-store' })).json())['data']
   let featured = (await (await fetch(`${process.env.HOST}/api/news/type?type=Featured`)).json())['data']
   let popular = (await (await fetch(`${process.env.HOST}/api/news/type?type=Popular`)).json())['data']
   let latest = (await (await fetch(`${process.env.HOST}/api/news/latest`)).json())['data']

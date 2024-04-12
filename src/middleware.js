@@ -29,7 +29,8 @@ export const config={
     matcher:[
         '/profile',
         '/comments',
-        '/api/user/profile',
+        '/api/user/profile/details',
+        '/api/user/profile/update',
         '/api/comments/manage',
     ]
 }

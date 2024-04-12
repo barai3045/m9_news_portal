@@ -1,3 +1,5 @@
-# 943 [Front End] Working With user Comments
+# 944 [Front End] User Profile update
 
-## user comments list created and updated
+## user profile updated managed
+
+---------- Project End --------------

@@ -1,3 +1,4 @@
-# 936 [Front End] Reset Password Form Submission
+# 937 [Front End] Get Login Cookies and Changed View
 
-## set password updated
+## Plain Layout updated
+## AppNavBar updated
